@@ -33,6 +33,12 @@ class MusicPlayer {
     }
   }
 
+  prev() {
+    index--;
+    song.src = songsList[index].song;
+    song.play();
+  }
+
   updateDisplay() {}
 }
 const song = new Audio(songsList[index].song);
@@ -43,3 +49,5 @@ play_btn.addEventListener("click", musicPlayer.play);
 stop_btn.addEventListener("click", musicPlayer.stop);
 
 nextSong.addEventListener("click", musicPlayer.next);
+
+prevSong.addEventListener("click", musicPlayer.prev);
