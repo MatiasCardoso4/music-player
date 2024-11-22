@@ -14,6 +14,34 @@ const songsList = [
     author: "Carlos Braute",
     song: "./songs/emotional-inspiring-piano-amp-violin-150030.mp3",
   },
+  {
+    author: "Carlos Braute",
+    song: "./songs/dramatic-epic-cinema-150027.mp3",
+  },
+  {
+    author: "Carlos Braute",
+    song: "./songs/action-intro-trailer-210365.mp3",
+  },
+  {
+    author: "Carlos Braute",
+    song: "./songs/happy-inspiring-violins-150044.mp3",
+  },
+  {
+    author: "Carlos Braute",
+    song: "./songs/motivation-background-151827.mp3",
+  },
+  {
+    author: "Carlos Braute",
+    song: "./songs/no-copyright-music-181373.mp3",
+  },
+  {
+    author: "Carlos Braute",
+    song: "./songs/stomp-clapping-150097.mp3",
+  },
+  {
+    author: "Carlos Braute",
+    song: "./songs/summer-upbeat-motivational-150098.mp3",
+  },
 ];
 let index = 0;
 
