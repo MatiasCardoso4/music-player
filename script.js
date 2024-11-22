@@ -16,26 +16,26 @@ const songsList = [
   },
 ];
 let index = 0;
+
 class MusicPlayer {
   play() {
-    const song = new Audio(songsList[index].song);
-
     song.play();
   }
   stop() {
-    const song = new Audio(songsList[index].song);
     song.pause();
   }
 
   next() {
-    index++;
-    const song = new Audio(songsList[index].song);
-
-    song.play();
+    if (index < songsList.length - 1) {
+      index++;
+      song.src = songsList[index].song;
+      song.play();
+    }
   }
 
   updateDisplay() {}
 }
+const song = new Audio(songsList[index].song);
 
 const musicPlayer = new MusicPlayer();
 play_btn.addEventListener("click", musicPlayer.play);
