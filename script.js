@@ -15,31 +15,31 @@ const songsList = [
     song: "./songs/emotional-inspiring-piano-amp-violin-150030.mp3",
   },
   {
-    author: "Carlos Braute",
+    author: "Sergio Fermento",
     song: "./songs/dramatic-epic-cinema-150027.mp3",
   },
   {
-    author: "Carlos Braute",
+    author: "Gorbachv Enrique",
     song: "./songs/action-intro-trailer-210365.mp3",
   },
   {
-    author: "Carlos Braute",
+    author: "Rolegio Furesmoni",
     song: "./songs/happy-inspiring-violins-150044.mp3",
   },
   {
-    author: "Carlos Braute",
+    author: "Susana",
     song: "./songs/motivation-background-151827.mp3",
   },
   {
-    author: "Carlos Braute",
+    author: "Enriqueta Homosapiens",
     song: "./songs/no-copyright-music-181373.mp3",
   },
   {
-    author: "Carlos Braute",
+    author: "Diego Comoestas",
     song: "./songs/stomp-clapping-150097.mp3",
   },
   {
-    author: "Carlos Braute",
+    author: "Do",
     song: "./songs/summer-upbeat-motivational-150098.mp3",
   },
 ];
@@ -48,6 +48,9 @@ let index = 0;
 class MusicPlayer {
   play() {
     song.play();
+    console.log(song.title);
+
+    return (display.textContent = songsList[index].author);
   }
   stop() {
     song.pause();
@@ -58,13 +61,16 @@ class MusicPlayer {
       index++;
       song.src = songsList[index].song;
       song.play();
+      return (display.textContent = songsList[index].author);
     }
   }
 
   prev() {
     index--;
     song.src = songsList[index].song;
+
     song.play();
+    return (display.textContent = songsList[index].author);
   }
 
   updateDisplay() {}
@@ -79,3 +85,5 @@ stop_btn.addEventListener("click", musicPlayer.stop);
 nextSong.addEventListener("click", musicPlayer.next);
 
 prevSong.addEventListener("click", musicPlayer.prev);
+
+// musicPlayer.updateDisplay();
