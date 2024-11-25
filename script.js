@@ -3,11 +3,13 @@ const stop_btn = document.querySelector(".stop-btn");
 const nextSong = document.querySelector(".next-btn");
 const prevSong = document.querySelector(".prev-btn");
 const display = document.querySelector(".display");
+const showDisplay = document.createElement("div");
 
 const songsList = [
   {
     author: "Ed Cheerlan",
     song: "./songs/cinematic-background-inspirational-150013.mp3",
+    duration: "2:26",
   },
 
   {
@@ -48,10 +50,8 @@ let index = 0;
 class MusicPlayer {
   play() {
     song.play();
-    console.log(song.title);
-
-    return (display.textContent = songsList[index].author);
   }
+
   stop() {
     song.pause();
   }
@@ -60,20 +60,28 @@ class MusicPlayer {
     if (index < songsList.length - 1) {
       index++;
       song.src = songsList[index].song;
+
       song.play();
-      return (display.textContent = songsList[index].author);
     }
   }
 
   prev() {
     index--;
     song.src = songsList[index].song;
-
     song.play();
-    return (display.textContent = songsList[index].author);
   }
 
-  updateDisplay() {}
+  updateDisplay() {
+    songsList.forEach((song) => {
+      const author = document.createElement("h3");
+      const duration = document.createElement("span");
+
+      author.textContent = song.author;
+      duration.textContent = song.duration;
+
+      showDisplay.append(author, duration);
+    });
+  }
 }
 const song = new Audio(songsList[index].song);
 
@@ -85,5 +93,3 @@ stop_btn.addEventListener("click", musicPlayer.stop);
 nextSong.addEventListener("click", musicPlayer.next);
 
 prevSong.addEventListener("click", musicPlayer.prev);
-
-// musicPlayer.updateDisplay();

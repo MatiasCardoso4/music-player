@@ -7,7 +7,7 @@
 }
 
 :root {
-  --clr-zinc0: #18181b;
+  --clr-zinc-900: #18181b;
   --clr-amber: #fbbf24;
   --clr-red: #dc2626;
   --clr-emerald: #34d399;
@@ -28,22 +28,23 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
   width: 20rem;
-  height: 150px;
-  border: 2px solid black;
+  height: 350px;
 }
 
 .reproductor .display {
   height: 180px;
   width: 100%;
-  background-color: white;
+  background-color: rgb(75, 75, 75);
+  border-radius: 6px;
+  color: white;
 }
 
 .reproductor .buttons {
   display: flex;
   width: 100%;
-  justify-content: space-around;
+  justify-content: space-between;
   margin-bottom: 4px;
 }
 
@@ -55,7 +56,7 @@ main {
 .reproductor .next-btn {
   height: 30px;
   width: 60px;
-  background-color: var(--clr-amber);
+  background-color: black;
   border: none;
   border-radius: 6px;
   color: #000;
@@ -67,7 +68,7 @@ main {
   width: 60px;
   border: none;
   border-radius: 6px;
-  background-color: var(--clr-emerald);
+  background-color: black;
   font-weight: bold;
 }
 
@@ -77,5 +78,14 @@ main {
   border: none;
   border-radius: 6px;
   font-weight: bold;
-  background-color: var(--clr-red);
+  background-color: black;
+}
+
+.reproductor .prev-btn,
+.reproductor .next-btn,
+.reproductor .play-btn,
+.reproductor .stop-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
