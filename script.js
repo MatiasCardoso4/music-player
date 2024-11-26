@@ -3,8 +3,7 @@ const stop_btn = document.querySelector(".stop-btn");
 const nextSong = document.querySelector(".next-btn");
 const prevSong = document.querySelector(".prev-btn");
 const display = document.querySelector(".display");
-const showDisplay = document.createElement("div");
-
+const author = document.createElement("h3");
 const songsList = [
   {
     author: "Ed Cheerlan",
@@ -45,51 +44,53 @@ const songsList = [
     song: "./songs/summer-upbeat-motivational-150098.mp3",
   },
 ];
-let index = 0;
-
 class MusicPlayer {
+  constructor(display, author, songsList) {
+    this.display = display;
+    this.author = author;
+    this.songsList = songsList;
+    this.song = new Audio();
+    this.index = 0;
+  }
+
+  updateDisplay() {
+    this.author.textContent = this.songsList[this.index].author;
+    this.display.append(this.author);
+  }
+
   play() {
-    song.play();
+    this.song.src = this.songsList[this.index].song;
+    this.song.play();
+    this.updateDisplay();
   }
 
   stop() {
-    song.pause();
+    this.song.pause();
   }
 
   next() {
-    if (index < songsList.length - 1) {
-      index++;
-      song.src = songsList[index].song;
+    if (this.index < this.songsList.length - 1) {
+      this.index++;
+      this.song.src = this.songsList[this.index].song;
 
-      song.play();
+      this.song.play();
+      this.updateDisplay();
     }
   }
 
   prev() {
-    index--;
-    song.src = songsList[index].song;
-    song.play();
-  }
-
-  updateDisplay() {
-    songsList.forEach((song) => {
-      const author = document.createElement("h3");
-      const duration = document.createElement("span");
-
-      author.textContent = song.author;
-      duration.textContent = song.duration;
-
-      showDisplay.append(author, duration);
-    });
+    this.index--;
+    this.song.src = this.songsList[this.index].song;
+    this.song.play();
+    this.updateDisplay();
   }
 }
-const song = new Audio(songsList[index].song);
 
-const musicPlayer = new MusicPlayer();
-play_btn.addEventListener("click", musicPlayer.play);
+const musicPlayer = new MusicPlayer(display, author, songsList);
+play_btn.addEventListener("click", () => musicPlayer.play());
 
-stop_btn.addEventListener("click", musicPlayer.stop);
+stop_btn.addEventListener("click", () => musicPlayer.stop());
 
-nextSong.addEventListener("click", musicPlayer.next);
+nextSong.addEventListener("click", () => musicPlayer.next());
 
-prevSong.addEventListener("click", musicPlayer.prev);
+prevSong.addEventListener("click", () => musicPlayer.prev());
